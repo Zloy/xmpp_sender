@@ -1,0 +1,39 @@
+= Xmpp Sender img[link:images/logo_icon.png]
+* http://github.com/zloy/xmpp_sender
+
+
+== DESCRIPTION
+This program sends XMPP (*Jabber*) messages passed by command line.
+
+It just starts, reads command line parameters, then reads config file, then it logins to server, sends specified message and quits. 
+
+I wrote it to have fun receiving notifications from remote rtorrent each time it finishes loading a torrent. But it could be used with any program which could run external utility by an event you want to be reported about.
+
+== ON WINDOWS
+=== HOW TO INSTALL 
+1. Launch <tt>setup.exe</tt> and follow it's directions
+2. Run <b>Xmpp Sender</b> by using a shortcut created during setup
+3. Add *ruby* to firewall exceptions when dialog pop up
+4. Edit <tt>xmpp_sender.yml</tt> to use your own defaults
+
+=== HOW TO USE WITH RTORRENT
+I've tested it with <b>rtorrent 3.0</b>.
+
+So you've installed Xmpp Sender to <tt>C:\\Program Files\\Xmpp Sender</tt> directory. 
+
+Try to issue in cmd the following command:<tt>C:\\Program Files\\Xmpp Sender\\xmpp_sender.exe -j 'rtorrent just finished %N' -b 'torrent loaded to: %D'</tt>
+
+You should recieve a new message in your IM with subject <tt>rtorrent just finished %N</tt> and body <tt>torrent loaded to: %D</tt>. 
+
+If you've received that message, then launch rtorrent ang go to <tt>Options/Preferences/Advanced/Run Program</tt> tab. Type in the field labeled <b>Run this program when a torrent finishes</b> this string: <tt>C:\\Program Files\\Xmpp Sender\\xmpp_sender.exe -j 'rtorrent just finished %N' -b 'torrent loaded to: %D'</tt>
+
+Click OK button and try to load some torrents. Enjoy!
+
+=== HOW TO COMPILE 
+If you want to compile it you need to install Inno_Setup[http://www.jrsoftware.org/isinfo.php], ruby_1.8.7[http://rubyforge.org/frs/download.php/75679/rubyinstaller-1.8.7-p357.exe] and *xmpp4r*, *ocra* gems. 
+
+After you get them installed, run:<tt>> ocra --chdir-first --no-lzma --innosetup xmpp_sender.iss --icon doc/images/logo_icon.ico xmpp_sender.rb</tt>
+
+== LICENSE
+
+see in license[link:file.license.html]

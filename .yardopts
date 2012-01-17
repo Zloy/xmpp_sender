@@ -1,0 +1,12 @@
+--markup rdoc
+--exclude .git
+--exclude .gitignore
+--exclude xmpp_sender.yml
+--exclude xmpp_sender.iss
+--hide-void-return
+--protected
+--private
+--main readme
+.
+-
+license

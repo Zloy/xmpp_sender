@@ -1,0 +1,9 @@
+# Be patient - don't use <Tab> for indentation, it's not permited in YAML
+# To indent use spaces only
+xmpp_sender:
+  server: qip.ru
+  login: xmmp-sender
+  password: xmmp-rednes
+  to: xmmp-sender-test
+  subject: first run
+  body: Hey Zloy, I tried xmpp sender too. Best wishes!

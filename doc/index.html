@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  File: readme
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: readme</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'>
+<h1>Xmpp Sender <img src="images/logo_icon.png" /></h1>
+<ul><li>
+<p><a
+href="http://github.com/zloy/xmpp_sender">github.com/zloy/xmpp_sender</a></p>
+</li></ul>
+
+<h2>DESCRIPTION</h2>
+
+<p>This program sends XMPP (<b>Jabber</b>) messages passed by command line.</p>
+
+<p>It just starts, reads command line parameters, then reads config file,
+then it logins to server, sends specified message and quits.</p>
+
+<p>I wrote it to have fun receiving notifications from remote rtorrent each
+time it finishes loading a torrent. But it could be used with any program
+which could run external utility by an event you want to be reported about.</p>
+
+<h2>ON WINDOWS</h2>
+
+<h3>HOW TO INSTALL </h3>
+<ol><li>
+<p>Launch <tt>setup.exe</tt> and follow it’s directions</p>
+</li><li>
+<p>Run <b>Xmpp Sender</b> by using a shortcut created during setup</p>
+</li><li>
+<p>Add <b>ruby</b> to firewall exceptions when dialog pop up</p>
+</li><li>
+<p>Edit <tt>xmpp_sender.yml</tt> to use your own defaults</p>
+</li></ol>
+
+<h3>HOW TO USE WITH RTORRENT</h3>
+
+<p>I’ve tested it with <b>rtorrent 3.0</b>.</p>
+
+<p>So you’ve installed Xmpp Sender to <tt>C:\Program Files\Xmpp Sender</tt>
+directory.</p>
+
+<p>Try to issue in cmd the following command:<tt>C:\Program Files\Xmpp
+Sender\xmpp_sender.exe -j 'rtorrent just finished %N' -b 'torrent loaded
+to: %D'</tt></p>
+
+<p>You should recieve a new message in your IM with subject <tt>rtorrent just
+finished %N</tt> and body <tt>torrent loaded to: %D</tt>.</p>
+
+<p>If you’ve received that message, then launch rtorrent ang go to
+<tt>Options/Preferences/Advanced/Run Program</tt> tab. Type in the field
+labeled <b>Run this program when a torrent finishes</b> this string:
+<tt>C:\Program Files\Xmpp Sender\xmpp_sender.exe -j 'rtorrent just finished
+%N' -b 'torrent loaded to: %D'</tt></p>
+
+<p>Click OK button and try to load some torrents. Enjoy!</p>
+
+<h3>HOW TO COMPILE </h3>
+
+<p>If you want to compile it you need to install <a
+href="http://www.jrsoftware.org/isinfo.php">Inno_Setup</a>, <a
+href="http://rubyforge.org/frs/download.php/75679/rubyinstaller-1.8.7-p357.exe">ruby_1.8.7</a>
+and <b>xmpp4r</b>, <b>ocra</b> gems.</p>
+
+<p>After you get them installed, run:<tt>&gt; ocra --chdir-first --no-lzma
+--innosetup xmpp_sender.iss --icon doc/images/logo_icon.ico
+xmpp_sender.rb</tt></p>
+
+<h2>LICENSE</h2>
+
+<p>see in <a href="file.license.html">license</a></p>
+</div></div>
+    
+    <div id="footer">
+  Generated on 01/16/12 23:52:13 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

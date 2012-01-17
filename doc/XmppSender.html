@@ -1,0 +1,810 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: XmppSender
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (X)</a> &raquo; 
+    
+    
+    <span class="title">XmppSender</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: XmppSender
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">XmppSender</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">Jabber</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">xmpp_sender.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Incapsulates all utility logic</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="version-classvariable" class="">@@version =
+          
+        </dt>
+        <dd><pre class="code"><span class='string val'>&quot;1.0.0&quot;</span>
+</pre></dd>
+      
+        <dt id="instant_variables-classvariable" class="">@@instant_variables =
+          
+        </dt>
+        <dd><pre class="code"><span class='dstring node'>%w/server login password to subject body/</span>
+</pre></dd>
+      
+        <dt id="opts-classvariable" class="">@@opts =
+          
+        </dt>
+        <dd><pre class="code"><span class='GetoptLong constant id'>GetoptLong</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span>
+  <span class='lbrack token'>[</span> <span class='string val'>&quot;--config&quot;</span><span class='comma token'>,</span>           <span class='string val'>&quot;-c&quot;</span><span class='comma token'>,</span>   <span class='GetoptLong constant id'>GetoptLong</span><span class='colon2 op'>::</span><span class='REQUIRED_ARGUMENT constant id'>REQUIRED_ARGUMENT</span> <span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='lbrack token'>[</span> <span class='string val'>&quot;--server&quot;</span><span class='comma token'>,</span>           <span class='string val'>&quot;-s&quot;</span><span class='comma token'>,</span>   <span class='GetoptLong constant id'>GetoptLong</span><span class='colon2 op'>::</span><span class='REQUIRED_ARGUMENT constant id'>REQUIRED_ARGUMENT</span> <span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='lbrack token'>[</span> <span class='string val'>&quot;--login&quot;</span><span class='comma token'>,</span>            <span class='string val'>&quot;-l&quot;</span><span class='comma token'>,</span>   <span class='GetoptLong constant id'>GetoptLong</span><span class='colon2 op'>::</span><span class='REQUIRED_ARGUMENT constant id'>REQUIRED_ARGUMENT</span> <span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='lbrack token'>[</span> <span class='string val'>&quot;--password&quot;</span><span class='comma token'>,</span>         <span class='string val'>&quot;-p&quot;</span><span class='comma token'>,</span>   <span class='GetoptLong constant id'>GetoptLong</span><span class='colon2 op'>::</span><span class='REQUIRED_ARGUMENT constant id'>REQUIRED_ARGUMENT</span> <span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='lbrack token'>[</span> <span class='string val'>&quot;--subject&quot;</span><span class='comma token'>,</span>          <span class='string val'>&quot;-j&quot;</span><span class='comma token'>,</span>   <span class='GetoptLong constant id'>GetoptLong</span><span class='colon2 op'>::</span><span class='REQUIRED_ARGUMENT constant id'>REQUIRED_ARGUMENT</span> <span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='lbrack token'>[</span> <span class='string val'>&quot;--body&quot;</span><span class='comma token'>,</span>             <span class='string val'>&quot;-b&quot;</span><span class='comma token'>,</span>   <span class='GetoptLong constant id'>GetoptLong</span><span class='colon2 op'>::</span><span class='REQUIRED_ARGUMENT constant id'>REQUIRED_ARGUMENT</span> <span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='lbrack token'>[</span> <span class='string val'>&quot;--usage&quot;</span><span class='comma token'>,</span>            <span class='string val'>&quot;-u&quot;</span><span class='comma token'>,</span>   <span class='GetoptLong constant id'>GetoptLong</span><span class='colon2 op'>::</span><span class='NO_ARGUMENT constant id'>NO_ARGUMENT</span> <span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='lbrack token'>[</span> <span class='string val'>&quot;--version&quot;</span><span class='comma token'>,</span>          <span class='string val'>&quot;-v&quot;</span><span class='comma token'>,</span>   <span class='GetoptLong constant id'>GetoptLong</span><span class='colon2 op'>::</span><span class='NO_ARGUMENT constant id'>NO_ARGUMENT</span> <span class='rbrack token'>]</span>
+<span class='rparen token'>)</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+  
+
+
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#printusage-class_method" title="printusage (class method)">+ <strong>printusage</strong>(error_code) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Prints usage and exits with passed <b>error_code</b>.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_opts-instance_method" title="#get_opts (instance method)">- <strong>get_opts</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Processes command line parameters.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_config-instance_method" title="#read_config (instance method)">- <strong>read_config</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Reads configuration parameters from config file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#send-instance_method" title="#send (instance method)">- <strong>send</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Sends a message.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_instance_variables_from-instance_method" title="#set_instance_variables_from (instance method)">- <strong>set_instance_variables_from</strong>(hash) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Sets up instance variables named in @@instance_variables with values.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#show_instance_variables-instance_method" title="#show_instance_variables (instance method)">- <strong>show_instance_variables</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Prints out instance variables named in @@instance_variables.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="printusage-class_method">
+  
+    + <strong>printusage</strong>(error_code) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Prints usage and exits with passed <b>error_code</b></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>error_code</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>process exit code</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'xmpp_sender.rb', line 113</span>
+
+<span class='def def kw'>def</span> <span class='XmppSender constant id'>XmppSender</span><span class='dot token'>.</span><span class='printusage identifier id'>printusage</span><span class='lparen token'>(</span><span class='error_code identifier id'>error_code</span><span class='rparen token'>)</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;xmpp_sender -- sends a message over XMPP protocol\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;Usage: xmpp [POSIX or GNU style options]\n\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;POSIX options                     GNU long options\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;    -c config_file_name               --config config_file_name\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;    -s server_name                    --server server_name\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;    -l login                          --login login\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;    -p password                       --password password\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;    -t to                             --to to\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;    -b body                           --body body\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;    -j subject                        --subject subject\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;    -u                                --usage\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;    -v                                --version\n\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;Examples: \n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;xmpp_sender -b Erlang\ Programming.pdf                    sends a message with specified body\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;xmpp_sender -t VassiliyPupkin -b Erlang\ Programming.pdf  sends a message with specified body to VassiliyPupkin\n\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;All options could be saved to the config file in YAML format. See settings.yml\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;Command line options have precedende over the options in config file\n&quot;</span>
+  <span class='print identifier id'>print</span> <span class='string val'>&quot;For licensing terms, see source code\n\n&quot;</span>
+  <span class='exit identifier id'>exit</span><span class='lparen token'>(</span><span class='error_code identifier id'>error_code</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="get_opts-instance_method">
+  
+    - <strong>get_opts</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Processes command line parameters</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'xmpp_sender.rb', line 138</span>
+
+<span class='def def kw'>def</span> <span class='get_opts identifier id'>get_opts</span>
+  <span class='begin begin kw'>begin</span>
+    <span class='@@opts ivar id'>@@opts</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='opt identifier id'>opt</span><span class='comma token'>,</span> <span class='arg identifier id'>arg</span><span class='bitor op'>|</span>
+      <span class='case case kw'>case</span> <span class='opt identifier id'>opt</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--config&quot;</span>
+          <span class='@config ivar id'>@config</span> <span class='assign token'>=</span> <span class='arg identifier id'>arg</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--server&quot;</span>
+          <span class='@server ivar id'>@server</span> <span class='assign token'>=</span> <span class='arg identifier id'>arg</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--login&quot;</span>
+          <span class='@login ivar id'>@login</span>  <span class='assign token'>=</span> <span class='arg identifier id'>arg</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--password&quot;</span>
+          <span class='@password ivar id'>@password</span>  <span class='assign token'>=</span> <span class='arg identifier id'>arg</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--to&quot;</span>
+          <span class='@to ivar id'>@to</span>  <span class='assign token'>=</span> <span class='to identifier id'>to</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--subject&quot;</span>
+          <span class='@subject ivar id'>@subject</span>  <span class='assign token'>=</span> <span class='arg identifier id'>arg</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--body&quot;</span>
+          <span class='@body ivar id'>@body</span>  <span class='assign token'>=</span> <span class='arg identifier id'>arg</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--help&quot;</span>
+          <span class='XmppSender constant id'>XmppSender</span><span class='dot token'>.</span><span class='printusage identifier id'>printusage</span> <span class='integer val'>0</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--usage&quot;</span>
+          <span class='XmppSender constant id'>XmppSender</span><span class='dot token'>.</span><span class='printusage identifier id'>printusage</span> <span class='integer val'>0</span>
+        <span class='when when kw'>when</span> <span class='string val'>&quot;--version&quot;</span>
+          <span class='puts identifier id'>puts</span> <span class='@@version ivar id'>@@version</span>
+          <span class='exit identifier id'>exit</span> <span class='integer val'>0</span>
+        <span class='else else kw'>else</span>
+          <span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;ignored unknown option: #{opt}&quot;</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+  <span class='rescue rescue kw'>rescue</span> <span class='GetoptLong constant id'>GetoptLong</span><span class='colon2 op'>::</span><span class='InvalidOption constant id'>InvalidOption</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='e identifier id'>e</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="read_config-instance_method">
+  
+    - <strong>read_config</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Reads configuration parameters from config file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'xmpp_sender.rb', line 70</span>
+
+<span class='def def kw'>def</span> <span class='read_config identifier id'>read_config</span>
+  <span class='@config_file ivar id'>@config_file</span> <span class='assign token'>=</span> <span class='@config ivar id'>@config</span> <span class='orop op'>||</span> <span class='string val'>'xmpp_sender.yml'</span>
+  <span class='begin begin kw'>begin</span>
+    <span class='settings identifier id'>settings</span> <span class='assign token'>=</span> <span class='YAML constant id'>YAML</span><span class='dot token'>.</span><span class='load_file identifier id'>load_file</span><span class='lparen token'>(</span> <span class='@config_file ivar id'>@config_file</span> <span class='rparen token'>)</span><span class='lbrack token'>[</span><span class='string val'>'xmpp_sender'</span><span class='rbrack token'>]</span>
+  <span class='rescue rescue kw'>rescue</span>
+    <span class='$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;Error reading config file '#{@config_file}'&quot;</span>
+    <span class='XmppSender constant id'>XmppSender</span><span class='dot token'>.</span><span class='printusage identifier id'>printusage</span> <span class='integer val'>-1</span>
+  <span class='end end kw'>end</span>
+
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='set_instance_variables_from identifier id'>set_instance_variables_from</span> <span class='settings identifier id'>settings</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='show_instance_variables identifier id'>show_instance_variables</span>
+
+  <span class='if if kw'>if</span> <span class='@password ivar id'>@password</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span> <span class='string val'>&quot;Can not authenticate due to password is nil&quot;</span> 
+    <span class='exit identifier id'>exit</span> <span class='integer val'>-2</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='@login ivar id'>@login</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span> <span class='string val'>&quot;Can not authenticate due to login is nil&quot;</span> 
+    <span class='exit identifier id'>exit</span> <span class='integer val'>-3</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='@server ivar id'>@server</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span> <span class='string val'>&quot;Can not authenticate due to server is nil&quot;</span> 
+    <span class='exit identifier id'>exit</span> <span class='integer val'>-4</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='@to ivar id'>@to</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span> <span class='string val'>&quot;Can not send because to is nil&quot;</span> 
+    <span class='exit identifier id'>exit</span> <span class='integer val'>-5</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='@body ivar id'>@body</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='andop op'>&amp;&amp;</span> <span class='@subject ivar id'>@subject</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> 
+    <span class='$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='puts identifier id'>puts</span> <span class='string val'>&quot;Can not send because both subject and body are nil&quot;</span> 
+    <span class='exit identifier id'>exit</span> <span class='integer val'>-6</span>
+  <span class='end end kw'>end</span>
+
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="send-instance_method">
+  
+    - <strong>send</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Sends a message</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'xmpp_sender.rb', line 32</span>
+
+<span class='def def kw'>def</span> <span class='send identifier id'>send</span>
+  <span class='comment val'>#Jabber::debug = true</span>
+  
+  <span class='jid identifier id'>jid</span><span class='assign token'>=</span><span class='JID constant id'>JID</span><span class='colon2 op'>::</span><span class='new identifier id'>new</span> <span class='dstring node'>&quot;#{@login}@#{@server}&quot;</span> 
+  <span class='cl identifier id'>cl</span> <span class='assign token'>=</span> <span class='Client constant id'>Client</span><span class='colon2 op'>::</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='jid identifier id'>jid</span><span class='rparen token'>)</span>
+  <span class='cl identifier id'>cl</span><span class='dot token'>.</span><span class='connect identifier id'>connect</span>
+  <span class='cl identifier id'>cl</span><span class='dot token'>.</span><span class='auth identifier id'>auth</span> <span class='@password ivar id'>@password</span>
+  <span class='m identifier id'>m</span> <span class='assign token'>=</span> <span class='Message constant id'>Message</span><span class='colon2 op'>::</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{@to}@#{@server}&quot;</span><span class='comma token'>,</span> <span class='@body ivar id'>@body</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='set_type identifier id'>set_type</span><span class='lparen token'>(</span><span class='symbol val'>:normal</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='set_id identifier id'>set_id</span><span class='lparen token'>(</span><span class='string val'>'1'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='set_subject identifier id'>set_subject</span><span class='lparen token'>(</span><span class='@subject ivar id'>@subject</span><span class='rparen token'>)</span>
+  <span class='cl identifier id'>cl</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='m identifier id'>m</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="set_instance_variables_from-instance_method">
+  
+    - <strong>set_instance_variables_from</strong>(hash) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Sets up instance variables named in @@instance_variables with values</p>
+
+<pre class="code"><span class='passed identifier id'>passed</span> <span class='by identifier id'>by</span> <span class='hash identifier id'>hash</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>hash</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>contains values for instance variables</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'xmpp_sender.rb', line 48</span>
+
+<span class='def def kw'>def</span> <span class='set_instance_variables_from identifier id'>set_instance_variables_from</span> <span class='hash identifier id'>hash</span>
+  <span class='@@instant_variables ivar id'>@@instant_variables</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='var_name identifier id'>var_name</span><span class='bitor op'>|</span>
+    <span class='var_value identifier id'>var_value</span> <span class='assign token'>=</span> <span class='hash identifier id'>hash</span><span class='lbrack token'>[</span> <span class='var_name identifier id'>var_name</span> <span class='rbrack token'>]</span>
+    <span class='var_name identifier id'>var_name</span>  <span class='assign token'>=</span> <span class='string val'>&quot;@&quot;</span> <span class='plus op'>+</span> <span class='var_name identifier id'>var_name</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='instance_variable_set identifier id'>instance_variable_set</span><span class='lparen token'>(</span><span class='var_name identifier id'>var_name</span><span class='comma token'>,</span> <span class='var_value identifier id'>var_value</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='instance_variable_get identifier id'>instance_variable_get</span><span class='lparen token'>(</span><span class='var_name identifier id'>var_name</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="show_instance_variables-instance_method">
+  
+    - <strong>show_instance_variables</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Prints out instance variables named in @@instance_variables</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'xmpp_sender.rb', line 59</span>
+
+<span class='def def kw'>def</span> <span class='show_instance_variables identifier id'>show_instance_variables</span>
+  <span class='@@instant_variables ivar id'>@@instant_variables</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='var_name identifier id'>var_name</span><span class='bitor op'>|</span>
+    <span class='var_name identifier id'>var_name</span>  <span class='assign token'>=</span> <span class='string val'>&quot;@&quot;</span> <span class='plus op'>+</span> <span class='var_name identifier id'>var_name</span>
+    <span class='var_value identifier id'>var_value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='instance_variable_get identifier id'>instance_variable_get</span> <span class='var_name identifier id'>var_name</span>
+    <span class='puts identifier id'>puts</span> <span class='string val'>&quot;%12s: %s&quot;</span><span class='mod op'>%</span><span class='lbrack token'>[</span><span class='var_name identifier id'>var_name</span><span class='comma token'>,</span> <span class='var_value identifier id'>var_value</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on 01/16/12 23:52:14 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
