@@ -3,10 +3,12 @@
 --exclude .gitignore
 --exclude xmpp_sender.yml
 --exclude xmpp_sender.iss
+--exclude README.md
+--exclude setup.exe
 --hide-void-return
 --protected
 --private
---main readme
+--main readme.rdoc
 .
 -
 license
