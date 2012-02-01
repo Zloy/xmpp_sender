@@ -26,7 +26,7 @@ class XmppSender
 		[ "--version",          "-v",   GetoptLong::NO_ARGUMENT ]
 	)
 
-	# Sends a message
+	# Sends a message composed of @subject and @body
 	# @return [void]
 	#
 	def send
@@ -76,37 +76,30 @@ class XmppSender
 			XmppSender.printusage -1
 		end
 
-		self.set_instance_variables_from settings
+		self.set_instance_variables_from( settings )
 		self.show_instance_variables
 
-		if @password.nil?
-			$stderr.puts "Can not authenticate due to password is nil" 
-			exit -2
-		end
-
-		if @login.nil?
-			$stderr.puts "Can not authenticate due to login is nil" 
-			exit -3
-		end
-
-		if @server.nil?
-			$stderr.puts "Can not authenticate due to server is nil" 
-			exit -4
-		end
-
-		if @to.nil?
-			$stderr.puts "Can not send because to is nil" 
-			exit -5
-		end
-
-		if @body.nil? && @subject.nil? 
-			$stderr.puts "Can not send because both subject and body are nil" 
-			exit -6
-		end
-
+		self.exit_if_nil @password,         -2, "Can not authenticate due to password is nil" 
+		self.exit_if_nil @login,            -3, "Can not authenticate due to login is nil" 
+		self.exit_if_nil @server,           -4, "Can not authenticate due to server is nil" 
+		self.exit_if_nil @to,               -5, "Can not send because 'to' is nil" 
+		self.exit_if_nil @body || @subject, -6, "Can not send because both subject and body are nil" 
 	end
 	
-	# Prints usage and exits with passed *error_code*
+	# Prints msg and exits with *error_code* if arg is nil
+	# @param [Object] arg argument to check for nil
+	# @param [Integer] exit_code the code process should return if arg is nil
+	# @param [String] msg message to print out to STDERR if arg is nil
+	# @return [void]
+	#
+	def exit_if_nil arg, exit_code, msg
+		if arg.nil? 
+			$stderr.puts msg
+			exit exit_code
+		end		
+	end
+	
+	# Prints usage and exits with *error_code*
 	# @param [Integer] error_code process exit code
 	# @return [void]
 	#
@@ -139,32 +132,20 @@ class XmppSender
 		begin
 			@@opts.each do |opt, arg|
 				case opt
-					when "--config"
-						@config = arg
-					when "--server"
-						@server = arg
-					when "--login"
-						@login  = arg
-					when "--password"
-						@password  = arg
-					when "--to"
-						@to  = to
-					when "--subject"
-						@subject  = arg
-					when "--body"
-						@body  = arg
-					when "--help"
-						XmppSender.printusage 0
-					when "--usage"
-						XmppSender.printusage 0
-					when "--version"
-						puts @@version
-						exit 0
-					else
-						puts "ignored unknown option: #{opt}"
+					when "--config"   then @config    = arg
+					when "--server"   then @server    = arg
+					when "--login"    then @login     = arg
+					when "--password" then @password  = arg
+					when "--to"       then @to        = to
+					when "--subject"  then @subject   = arg
+					when "--body"     then @body      = arg
+					when "--help"     then XmppSender.printusage 0
+					when "--usage"    then XmppSender.printusage 0
+					when "--version"  then puts @@version; exit 0
 				end
 			end
 		rescue GetoptLong::InvalidOption => e
+			puts "ignored #{e.message}"
 		end
 	end
 end
