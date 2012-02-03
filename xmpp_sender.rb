@@ -11,7 +11,7 @@ require 'xmpp4r/client'
 class XmppSender
 	include Jabber
 	
-	@@version = "1.0.0"
+	@@version = "1.0.1"
 	@@instant_variables = %w/server login password to subject body/
 	@@instant_variables.each{ |a| attr_accessor a.intern }
 	

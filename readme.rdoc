@@ -13,7 +13,7 @@ I wrote it to have fun receiving notifications from remote rtorrent each time i
 === HOW TO INSTALL 
 1. Launch <tt>setup.exe</tt> and follow it's directions
 2. Run <b>Xmpp Sender</b> by using a shortcut created during setup
-3. Add *ruby* to firewall exceptions when dialog pop up
+3. Add *ruby* to firewall exceptions when dialog pops up
 4. Edit <tt>xmpp_sender.yml</tt> to use your own defaults
 
 === HOW TO USE WITH RTORRENT
