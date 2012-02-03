@@ -32,6 +32,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 Source: "C:\InstantRails\ruby_apps\xmpp_sender\readme"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\InstantRails\ruby_apps\xmpp_sender\license"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\InstantRails\ruby_apps\xmpp_sender\xmpp_sender.yml"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

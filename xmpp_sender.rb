@@ -20,6 +20,7 @@ class XmppSender
 		[ "--server",           "-s",   GetoptLong::REQUIRED_ARGUMENT ],
 		[ "--login",            "-l",   GetoptLong::REQUIRED_ARGUMENT ],
 		[ "--password",         "-p",   GetoptLong::REQUIRED_ARGUMENT ],
+		[ "--to",               "-t",   GetoptLong::REQUIRED_ARGUMENT ],
 		[ "--subject",          "-j",   GetoptLong::REQUIRED_ARGUMENT ],
 		[ "--body",             "-b",   GetoptLong::REQUIRED_ARGUMENT ],
 		[ "--usage",            "-u",   GetoptLong::NO_ARGUMENT ],
@@ -119,9 +120,9 @@ class XmppSender
 		print "Examples: \n"
 		print "xmpp_sender -b Erlang\ Programming.pdf                    sends a message with specified body\n"
 		print "xmpp_sender -t VassiliyPupkin -b Erlang\ Programming.pdf  sends a message with specified body to VassiliyPupkin\n\n"
-		print "All options could be saved to the config file in YAML format. See settings.yml\n"
-		print "Command line options have precedende over the options in config file\n"
-		print "For licensing terms, see source code\n\n"
+		print "All options could be saved to the config file in YAML format. See xmpp_sender.yml\n"
+		print "Command line options have precedence over the options in config file\n"
+		print "For licensing terms, see 'license' file\n\n"
 		exit(error_code)
 	end
 
@@ -136,7 +137,7 @@ class XmppSender
 					when "--server"   then @server    = arg
 					when "--login"    then @login     = arg
 					when "--password" then @password  = arg
-					when "--to"       then @to        = to
+					when "--to"       then @to        = arg
 					when "--subject"  then @subject   = arg
 					when "--body"     then @body      = arg
 					when "--help"     then XmppSender.printusage 0
