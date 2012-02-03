@@ -10,7 +10,7 @@ It just starts, reads command line parameters, then reads config file, then it 
 I wrote it to have fun receiving notifications from remote rtorrent each time it finishes loading a torrent. But it could be used with any program which could run external utility by an event you want to be reported about.
 
 == ON WINDOWS
-=== HOW TO INSTALL 
+=== HOW TO INSTALL 
 1. Launch <tt>setup.exe</tt> and follow it's directions
 2. Run <b>Xmpp Sender</b> by using a shortcut created during setup
 3. Add *ruby* to firewall exceptions when dialog pops up
@@ -26,7 +26,7 @@ You should recieve a new message in your IM with subject <tt>rtorrent just finis
 
 If you've received that message, then launch rtorrent ang go to <tt>Options/Preferences/Advanced/Run Program</tt> tab. Type in the field labeled <b>Run this program when a torrent finishes</b> this string: <tt>C:\\Program Files\\Xmpp Sender\\xmpp_sender.exe -j 'rtorrent just finished %N' -b 'torrent loaded to: %D'</tt>
 
-Click OK button and try to load some torrents. Enjoy!=== HOW TO COMPILE 
+Click OK button and try to load some torrents. Enjoy!=== HOW TO COMPILE 
 If you want to compile it you need to clone the repo git://github.com/Zloy/xmpp_sender.git and install Inno_Setup[http://www.jrsoftware.org/isinfo.php], ruby_1.8.7[http://rubyforge.org/frs/download.php/75679/rubyinstaller-1.8.7-p357.exe] and *xmpp4r*, *ocra* gems. 
 
 Change dir to where you've placed the cloned repo, say it be <tt>C:\ruby_apps\xmpp_sender</tt>.In xmpp_sender.iss find entry [Files], under that entry in all lines those start with 'Source:' change paths to source files from <tt>C:\InstantRails\ruby_apps\xmpp_sender\</tt> to the path where you placed the cloned repo: <tt>C:\ruby_apps\xmpp_sender\</tt>.run:<tt>> ocra --chdir-first --no-lzma --innosetup xmpp_sender.iss --icon doc/images/logo_icon.ico xmpp_sender.rb</tt>
