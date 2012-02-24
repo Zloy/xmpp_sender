@@ -13,7 +13,7 @@ It just starts, reads command line parameters, then reads config file,
 then it logins to server, sends specified message and quits. 
 
 I wrote it to have 
-fun receiving notifications from remote utorrent each time it finishes loading a torrent. But it could be used with any program which could run external utility by an event you want to be reported about.
+fun receiving notifications from remote rtorrent each time it finishes loading a torrent. But it could be used with any program which could run external utility by an event you want to be reported about.
 
 
 
@@ -32,21 +32,19 @@ fun receiving notifications from remote utorrent each time it finishes loading a
 
 === HOW TO USE WITH RTORRENT
 
-I've tested it with <b>utorrent 3.0</b>.
+I've tested it with <b>rtorrent 3.0</b>.
 
 
 So you've installed Xmpp Sender to <tt>C:\\Program Files\\Xmpp Sender</tt> directory. 
 
-Try to issue in cmd the following command:<tt>C:\\Program Files\\Xmpp Sender\\xmpp_sender.exe -j 'utorrent just finished %N' -b 'torrent loaded to: %D'</tt>
+Try to issue in cmd the following command:<tt>C:\\Program Files\\Xmpp Sender\\xmpp_sender.exe -j 'rtorrent just finished %N' -b 'torrent loaded to: %D'</tt>
 
 
-You should recieve a new message in your IM with subject <tt>utorrent just finished %N</tt> and body <tt>torrent loaded to: %D</tt>. 
+You should recieve a new message in your IM with subject <tt>rtorrent just finished %N</tt> and body <tt>torrent loaded to: %D</tt>. 
 
-If you've received that message, then 
+If you've received that message, then launch rtorrent ang go to <tt>Options/Preferences/Advanced/Run Program</tt> tab
 
-launch utorrent ang go to <tt>Options/Preferences/Advanced/Run Program</tt> tab
-
-. Type in the field labeled <b>Run this program when a torrent finishes</b> this string: <tt>C:\\Program Files\\Xmpp Sender\\xmpp_sender.exe -j 'utorrent just finished %N' -b 'torrent loaded to: %D'</tt>
+Type in the field labeled <b>Run this program when a torrent finishes</b> this string: <tt>C:\\Program Files\\Xmpp Sender\\xmpp_sender.exe -j 'rtorrent just finished %N' -b 'torrent loaded to: %D'</tt>
 
 Click OK button and try to load some torrents. Enjoy!
 
@@ -65,4 +63,4 @@ run:<tt>> ocra --chdir-first --no-lzma --innosetup xmpp_sender.iss --icon doc/im
 
 == LICENSE
 
-see in license[link:file.license.html]
+see in LICENSE[http://github.com/Zloy/xmpp_sender/blob/master/LICENSE]
